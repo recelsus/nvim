@@ -314,7 +314,13 @@ require("lazy").setup({
       },
       config = function()
         require('nvim-tree').setup({
-
+          filters = {
+            dotfiles = false,
+            custom = {},
+          },
+          git = {
+            ignore = false,
+          },
         })
         vim.api.nvim_set_var('loaded_netrw', 1)
         vim.api.nvim_set_var('loaded_netrwPlugin', 1)
