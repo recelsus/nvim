@@ -9,3 +9,6 @@
 !lua/
 !lua/plugins/
 !lua/plugins/**
+
+!bin/
+!bin/**
