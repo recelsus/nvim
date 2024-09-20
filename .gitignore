@@ -1,3 +1,11 @@
 *
 !init.lua
 !.gitignore
+
+!lua/
+!lua/config/
+!lua/config/**
+
+!lua/
+!lua/plugins/
+!lua/plugins/**
