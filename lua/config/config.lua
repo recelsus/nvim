@@ -58,5 +58,5 @@ opt.syntax = enable
 opt.timeoutlen = 600
 
 vim.api.nvim_set_keymap('t', '<ESC>', '<C-\\><C-n>', { noremap = true, silent = true })
-
+vim.opt.termguicolors = true
 

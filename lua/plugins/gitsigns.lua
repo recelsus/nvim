@@ -11,7 +11,6 @@ return {
           changedelete = { text = '~' },
         },
 
-        -- ハイライトを新しい方式で設定
         on_attach = function()
           -- Add highlights
           vim.api.nvim_set_hl(0, 'GitSignsAdd', { link = 'GitGutterAdd' })
@@ -43,7 +42,7 @@ return {
           interval = 1000,
         },
 
-        current_line_blame = true, -- 現在行の git blame を表示
+        current_line_blame = true,
         current_line_blame_opts = {
           virt_text = true,
           virt_text_pos = 'eol',
