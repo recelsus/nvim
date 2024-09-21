@@ -6,7 +6,7 @@ return {
       require('lualine').setup({
         options = {
           icons_enabled = true,  
-          theme = 'rose-pine',     
+          theme = 'onedark',     
           component_separators = { left = '', right = '' },
           section_separators = { left = '', right = '' },
           disabled_filetypes = {},  
@@ -33,8 +33,6 @@ return {
       })
     end
   },
-  
-  
   {
     "kdheepak/tabline.nvim",
     dependencies = { { "nvim-lualine/lualine.nvim", opt = true }, { 'nvim-tree/nvim-web-devicons', opt = true } },
