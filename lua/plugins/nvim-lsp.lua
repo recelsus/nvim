@@ -34,26 +34,25 @@ return {
         vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, bufopts)
       end
 
-      -- tsserver の場合は cmd を明示的に指定する
-      require('lspconfig').tsserver.setup {
-        cmd = {vim.fn.expand("$HOME/.local/share/nvim/mason/bin/typescript-language-server"), "--stdio"},
-        on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      local server_map = {
+        ts_ls = "tsserver",
+        bashls = "bashls",
+        clangd = "clangd",
+        phpactor = "phpactor",
+        rust_analyzer = "rust_analyzer",
       }
 
-      -- 他のサーバーは通常の setup_handlers でセットアップ
       require("mason-lspconfig").setup_handlers {
         function(server_name)
-          if server_name ~= "tsserver" then  -- tsserver 以外をセットアップ
-            require("lspconfig")[server_name].setup {
-              capabilities = require('cmp_nvim_lsp').default_capabilities(),
-              on_attach = on_attach
-            }
-          end
+          local lsp_server = server_map[server_name] or server_name
+
+          require("lspconfig")[lsp_server].setup {
+            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            on_attach = on_attach
+          }
         end,
       }
 
-      -- cmp（補完プラグイン）の設定
       local cmp = require'cmp'
       local luasnip = require'luasnip'
 
