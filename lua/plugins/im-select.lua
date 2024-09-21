@@ -8,7 +8,7 @@ end
 return (function()
   if vim.loop.os_uname().sysname == "Linux" then
     if not is_fcitx5_installed() then
-      return nil
+      return {}
     else
       return {
         {
@@ -38,3 +38,4 @@ return (function()
     }
   end
 end)()
+
