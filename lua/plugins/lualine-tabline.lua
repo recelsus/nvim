@@ -49,12 +49,7 @@ return {
         }
       })
 
-      
       local opts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap('n', '<leader>1', '1gt', opts)  
-      vim.api.nvim_set_keymap('n', '<leader>2', '2gt', opts)  
-      vim.api.nvim_set_keymap('n', '<leader>3', '3gt', opts)  
-      vim.api.nvim_set_keymap('n', '<leader>4', '4gt', opts)  
       vim.api.nvim_set_keymap('n', '<leader>t', ':tabnew<CR>', opts)  
       vim.api.nvim_set_keymap('n', '<leader>q', ':tabclose<CR>', opts)  
     end
