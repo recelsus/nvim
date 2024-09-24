@@ -1,6 +1,7 @@
 return {
   {
     "norcalli/nvim-colorizer.lua",
+    event = "InsertEnter",
     config = function()
       require('colorizer').setup({
         '*';

@@ -1,8 +1,10 @@
 return {
   {
     "akinsho/toggleterm.nvim",
+    lazy = false,
     config = function()
       local toggleterm = require("toggleterm")
+
       toggleterm.setup({
         size = function(term)
           if term.direction == "horizontal" then
@@ -11,6 +13,7 @@ return {
             return math.floor(vim.o.columns * 0.4)
           end
         end,
+
         open_mapping = [[<C-t>]],
         hide_numbers = true,
         shade_filetypes = {},
@@ -31,6 +34,7 @@ return {
           },
         },
       })
+
       local Terminal = require("toggleterm.terminal").Terminal
     end,
   },    

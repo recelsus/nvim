@@ -2,6 +2,7 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
+    ft = { "markdown" },  
     config = function()
       vim.g.mkdp_auto_start = 0  
       vim.g.mkdp_auto_close = 1  
@@ -12,7 +13,6 @@ return {
       vim.g.mkdp_port = '8090'
       vim.g.mkdp_echo_preview_url = 1 
     end,
-    ft = { "markdown" },  
   }
 }
 

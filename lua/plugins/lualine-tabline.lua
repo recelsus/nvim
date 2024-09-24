@@ -1,6 +1,7 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
+    lazy = false,
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       require('lualine').setup({
@@ -35,7 +36,11 @@ return {
   },
   {
     "kdheepak/tabline.nvim",
-    dependencies = { { "nvim-lualine/lualine.nvim", opt = true }, { 'nvim-tree/nvim-web-devicons', opt = true } },
+    lazy = false,
+    dependencies = { 
+      { "nvim-lualine/lualine.nvim", opt = true }, 
+      { 'nvim-tree/nvim-web-devicons', opt = true }
+    },
     config = function()
       require('tabline').setup({
         

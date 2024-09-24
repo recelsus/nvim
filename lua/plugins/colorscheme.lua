@@ -1,6 +1,7 @@
 return {
   {
-    "navarasu/onedark.nvim", name = "onedark",
+    "navarasu/onedark.nvim",
+    lazy = false,
     config = function()
       require('onedark').setup {
         style = 'warmer'
@@ -8,10 +9,12 @@ return {
       vim.cmd('colorscheme onedark')
     end
   },
-  {
-    "rose-pine/neovim", name = "rose-pine",
-    config = function()
-      -- vim.cmd('colorscheme rose-pine')
-    end
-  }
+  -- {
+  --   "rose-pine/neovim",
+  --   name = "rose-pine",
+  --   lazy = false,
+  --   config = function()
+  --     -- vim.cmd('colorscheme rose-pine')
+  --   end
+  -- }
 }

@@ -13,6 +13,7 @@ return (function()
       return {
         {
           "keaising/im-select.nvim",
+          event = "InsertEnter",
           config = function()
             require("im_select").setup({
               default_im_select = "1",
@@ -27,6 +28,7 @@ return (function()
     return {
       {
         "keaising/im-select.nvim",
+        event = "InsertEnter",
         config = function()
           require("im_select").setup({
             default_im_select = "com.apple.keylayout.US",

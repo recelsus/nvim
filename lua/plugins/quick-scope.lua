@@ -1,6 +1,7 @@
 return {
   {
     "unblevable/quick-scope",
+    event = 'BufReadPre',
     config = function()
       vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
 

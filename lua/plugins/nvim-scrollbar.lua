@@ -2,6 +2,7 @@ return {
   {
     "petertriho/nvim-scrollbar",
     dependencies = { "kevinhwang91/nvim-hlslens" },  
+    event = "BufReadPre",
     config = function()
       require("scrollbar").setup({
         show = true,

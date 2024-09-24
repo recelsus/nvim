@@ -1,6 +1,7 @@
 return {
   {
     "voldikss/vim-translator",
+    event = "BufReadPre",
     config = function()
       vim.g.translator_default_engines = {'google'}
       vim.g.translator_target_lang = 'ja'
