@@ -45,13 +45,12 @@ return {
         }
       })
       local builtin = require("telescope.builtin")      
-      local opts = { noremap = true, silent = true }
 
-      vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)  
-      vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)   
-      vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)     
-      vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)   
-      vim.keymap.set("n", "<leader>fk", builtin.keymaps, opts)
+      vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { noremap = true, silent = true, desc = "Find Files" })  
+      vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { noremap = true, silent = true, desc = "Live Grep" })   
+      vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { noremap = true, silent = true, desc = "List Buffers" })     
+      vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { noremap = true, silent = true, desc = "Search Help" })   
+      vim.keymap.set("n", "<leader>fk", builtin.keymaps, { noremap = true, silent = true, desc = "Search Keymaps" })
 
       telescope.load_extension("fzf")
     end

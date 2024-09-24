@@ -7,6 +7,6 @@ return {
     }
   end,
   keys = {
-    {mode = "", "<leader>s", "<cmd>HopWord<CR>", desc = ""},
+    {mode = "", "<leader>s", "<cmd>HopWord<CR>", desc = "Move Target"},
   }
 }
