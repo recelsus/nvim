@@ -11,11 +11,15 @@ return {
          { "<auto>", mode = "nixsotc" },
           -- { "<leader>", mode = { "n", "v" } },
         },
+        icons = {
+          separator = "=>",
+          group = "",
+        }
       }
       wk.add({ "<leader>s", hidden = true })
-      wk.add({ "<leader>f", group = "Telescope" }) 
-      wk.add({ "<leader>e", desc = "Show Diagnostic" }) 
+      wk.add({ "<leader>f", group = "Telescope", icon = ""}) 
+      wk.add({ "<leader>e", desc = "Show Diagnostic", icon = "" }) 
+      wk.add({ "<leader>g", desc = "Git signs", icon = "" }) 
     end,
   }
 }
-
