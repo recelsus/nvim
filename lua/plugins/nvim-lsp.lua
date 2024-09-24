@@ -17,21 +17,18 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup()
 
-      local opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, opts)
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+      vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, { desc = "[LSP] Show Diagnostics", noremap = true, silent = true })
+      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "[LSP] Go to Previous Diagnostic", noremap = true, silent = true })
+      vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "[LSP] Go to Next Diagnostic", noremap = true, silent = true })
 
       local on_attach = function(client, bufnr)
-        local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-        vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "[LSP] Show Hover Info", buffer = bufnr })
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "[LSP] Go to Definition", buffer = bufnr })
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "[LSP] Go to Implementation", buffer = bufnr })
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "[LSP] Find References", buffer = bufnr })
+        vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "[LSP] Show Signature Help", buffer = bufnr })
       end
 
       local server_map = {
