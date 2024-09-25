@@ -14,7 +14,7 @@ return {
           end
         end,
 
-        open_mapping = [[<C-t>]],
+        open_mapping = [[<C-t>]], 
         hide_numbers = true,
         shade_filetypes = {},
         shade_terminals = true,
@@ -22,7 +22,7 @@ return {
         start_in_insert = true,
         insert_mappings = true,
         persist_size = true,
-        direction = "horizontal",
+        direction = "horizontal", 
         close_on_exit = true,
         shell = vim.o.shell,
         float_opts = {
@@ -36,6 +36,26 @@ return {
       })
 
       local Terminal = require("toggleterm.terminal").Terminal
+      local float_term = Terminal:new({
+        direction = "float",
+        close_on_exit = true,
+        hidden = true,
+        float_opts = {
+          width = 80,
+          height = 20,
+          row = function()
+            return vim.o.lines - 20 - 2  
+          end,
+          col = function()
+            return vim.o.columns - 80 - 2  
+          end,
+          border = "single",
+        },
+      })
+
+      vim.keymap.set('n', '<S-t>', function()
+        float_term:toggle()
+      end, { noremap = true, silent = true, desc = "Toggle Float Terminal" })
     end,
-  },    
+  },
 }
