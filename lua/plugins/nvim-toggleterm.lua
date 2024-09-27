@@ -41,8 +41,8 @@ return {
         close_on_exit = true,
         hidden = true,
         float_opts = {
-          width = 80,
-          height = 20,
+          width = 120,
+          height = 30,
           row = function()
             return vim.o.lines - 20 - 2  
           end,
