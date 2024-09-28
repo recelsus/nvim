@@ -26,14 +26,14 @@ return {
             "-uu",
           },
           mappings = {
-            i = {
-              ["<C-j>"] = "move_selection_next",
-              ["<C-k>"] = "move_selection_previous",
-            },
-            n = {
-              ["<C-j>"] = "move_selection_next",
-              ["<C-k>"] = "move_selection_previous",
-            },
+          --  i = {
+          --    ["<C-j>"] = "move_selection_next",
+          --    ["<C-k>"] = "move_selection_previous",
+          --  },
+          --  n = {
+          --    ["<C-j>"] = "move_selection_next",
+          --    ["<C-k>"] = "move_selection_previous",
+          --  },
           }
         },
         extensions = {
