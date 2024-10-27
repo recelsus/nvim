@@ -14,6 +14,7 @@ return {
             "^.git",
             "^.cache",
             "^Library",
+            "node_modules/.*"
           },
           vimgrep_arguments = {
             "rg",
