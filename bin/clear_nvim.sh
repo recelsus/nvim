@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 SHARE_DIR="$HOME/.local/share/nvim"
 CACHE_DIR="$HOME/.cache/nvim"
 
