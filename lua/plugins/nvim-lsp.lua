@@ -32,7 +32,7 @@ return {
       end
 
       local server_map = {
-        ts_ls = "tsserver",
+        ts_ls = "ts_ls",
         bashls = "bashls",
         clangd = "clangd",
         phpactor = "phpactor",
