@@ -5,11 +5,11 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/nvim-cmp",     
-      "hrsh7th/cmp-nvim-lsp", 
-      "hrsh7th/cmp-buffer",   
-      "hrsh7th/cmp-path",     
-      "L3MON4D3/LuaSnip",     
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "L3MON4D3/LuaSnip",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
     },
@@ -22,6 +22,12 @@ return {
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "[LSP] Go to Next Diagnostic", noremap = true, silent = true })
 
       local on_attach = function(client, bufnr)
+        vim.diagnostic.config({
+          virtual_text = true,
+          signs = true,
+          underline = true,
+        }, bufnr)
+
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "[LSP] Show Hover Info", buffer = bufnr })
@@ -43,8 +49,11 @@ return {
         function(server_name)
           local lsp_server = server_map[server_name] or server_name
 
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+          -- capabilities.offsetEncoding = { "utf-16" }
+
           require("lspconfig")[lsp_server].setup {
-            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            capabilities = capabilities,
             on_attach = on_attach
           }
         end,

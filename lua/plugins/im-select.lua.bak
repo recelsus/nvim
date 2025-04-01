@@ -31,6 +31,7 @@ return (function()
         event = "InsertEnter",
         config = function()
           require("im_select").setup({
+            binary_path = "/opt/homebrew/bin/im-select",
             default_im_select = "com.apple.keylayout.US",
             set_default_events = {"VimEnter", "InsertEnter", "InsertLeave"},
             set_previous_events = {},

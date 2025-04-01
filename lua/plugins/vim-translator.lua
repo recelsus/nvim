@@ -6,7 +6,7 @@ return {
       vim.g.translator_default_engines = {'google'}
       vim.g.translator_target_lang = 'ja'
       vim.g.translator_source_lang = 'auto'
-      
+
       vim.keymap.set('n', '<leader>tt', '<Plug>Translate', { noremap = true, silent = true, desc = "[Translator] Translate Word" })
       vim.keymap.set('v', '<leader>tt', '<Plug>TranslateV', { noremap = true, silent = true, desc = "[Translator] Translate Selected Text" })
       vim.keymap.set('x', '<leader>tt', '<Plug>TranslateV', { noremap = true, silent = true, desc = "[Translator] Translate Selected Text" })

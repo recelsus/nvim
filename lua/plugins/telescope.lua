@@ -1,13 +1,13 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { 
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" } 
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
     },
     event = "BufReadPre",
     config = function()
       local telescope = require("telescope")
-      
+
       telescope.setup({
         defaults = {
           file_ignore_patterns = {
@@ -46,8 +46,8 @@ return {
           },
         }
       })
-      local builtin = require("telescope.builtin")      
-      
+      local builtin = require("telescope.builtin")
+
       vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { noremap = true, silent = true, desc = "[Telescope] Find Files" })
       vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { noremap = true, silent = true, desc = "[Telescope] Live Grep (Text Search)" })
       vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { noremap = true, silent = true, desc = "[Telescope] List Buffers" })
