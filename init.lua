@@ -14,10 +14,50 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     lazypath,
   })
 end
-
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup('plugins', {
-  rocks = {
-    enabled = false,
-  },
+
+local function load_plugins()
+  local env_path = vim.fn.stdpath("config") .. "/env"
+  local file = io.open(env_path, "r")
+  local env = file and file:read("*l") or "full"
+  if file then file:close() end
+
+  local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
+  local plugins = {}
+
+  local minimal_excludes = {
+    ["codecompanion.lua"] = true,
+    ["markdown-preview.lua"] = true,
+    ["nvim-lsp.lua"] = true,
+    ["telescope.lua"] = true,
+    ["which-key.lua"] = true,
+    ["vim-translator.lua"] = true,
+  }
+
+  for _, file in ipairs(vim.fn.readdir(plugin_dir)) do
+    if file:match("%.lua$") then
+      if env == "minimal" and minimal_excludes[file] then
+        goto continue
+      end
+
+      local module_name = file
+        :gsub("%.lua$", "")
+        :gsub("%.", "_")
+
+      local ok, mod = pcall(require, "plugins." .. module_name)
+      if ok then
+        table.insert(plugins, mod)
+      else
+        vim.notify("Failed to load plugin: " .. file, vim.log.levels.WARN)
+      end
+    end
+    ::continue::
+  end
+
+  return plugins
+end
+
+require("lazy").setup(load_plugins(), {
+  rocks = { enabled = false },
 })
+
