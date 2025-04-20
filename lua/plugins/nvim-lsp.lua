@@ -50,7 +50,6 @@ return {
           local lsp_server = server_map[server_name] or server_name
 
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
-          -- capabilities.offsetEncoding = { "utf-16" }
 
           require("lspconfig")[lsp_server].setup {
             capabilities = capabilities,

@@ -28,7 +28,7 @@ return {
           print("Copilot disabled")
         end
       end, {})
-      
+
       vim.keymap.set("n", "<C-l>", "<Nop>", { noremap = true, silent = true, desc = "Disable default <C-i> behavior" })
       vim.keymap.set("i", "<C-l>", 'copilot#Accept("<CR>")', { expr = true, silent = true, noremap = true, desc = "[Copilot] Accept Suggestion" })
 
