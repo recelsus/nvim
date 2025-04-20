@@ -9,7 +9,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "L3MON4D3/LuaSnip",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
     },
@@ -59,14 +58,8 @@ return {
       }
 
       local cmp = require'cmp'
-      local luasnip = require'luasnip'
 
       cmp.setup({
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
         mapping = {
           ["<C-p>"] = cmp.mapping.select_prev_item(),
           ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -83,7 +76,6 @@ return {
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_document_symbol' },
           { name = 'nvim_lsp_signature_help' },
-          { name = 'luasnip' },
         }, {
           { name = 'buffer' },
           { name = 'path' },
