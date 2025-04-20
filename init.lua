@@ -33,13 +33,13 @@ local function load_plugins()
     ["which-key.lua"] = true,
   }
 
-  for _, file in ipairs(vim.fn.readdir(plugin_dir)) do
-    if file:match("%.lua$") then
+  for _, fname in ipairs(vim.fn.readdir(plugin_dir)) do
+    if fname:match("%.lua$") then
       if env == "minimal" and minimal_excludes[file] then
         goto continue
       end
 
-      local module_name = file
+      local module_name = fname
         :gsub("%.lua$", "")
         :gsub("%.", "_")
 
