@@ -2,7 +2,8 @@ return {
   {
     "echasnovski/mini.indentscope",
     version = false,
-    lazy = false,
+    event = 'BufReadPre',
+    
     config = function()
       require('mini.indentscope').setup({
         
@@ -10,6 +11,7 @@ return {
         options = {
           try_as_border = true,  
         },
+
         draw = {
           delay = 100,  
           animation = require('mini.indentscope').gen_animation.none() 

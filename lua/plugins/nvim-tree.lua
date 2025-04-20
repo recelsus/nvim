@@ -3,9 +3,11 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
+
     keys = {
       { mode = "n", "<C-e>", "<cmd>:Ex<cr>", desc = "Toggle Nvim-Tree Window on Left" },
     },
+
     config = function()
       require('nvim-tree').setup({
         filters = {

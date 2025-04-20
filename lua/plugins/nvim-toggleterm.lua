@@ -2,10 +2,12 @@ return {
   {
     "akinsho/toggleterm.nvim",
     lazy = false,
+
     config = function()
       local toggleterm = require("toggleterm")
+      local Terminal = require("toggleterm.terminal").Terminal
 
-      toggleterm.setup({
+      local term_config = {
         size = function(term)
           if term.direction == "horizontal" then
             return math.floor(vim.o.lines * 0.3)
@@ -13,8 +15,7 @@ return {
             return math.floor(vim.o.columns * 0.4)
           end
         end,
-
-        open_mapping = [[<C-t>]], 
+        open_mapping = [[<C-t>]],
         hide_numbers = true,
         shade_filetypes = {},
         shade_terminals = true,
@@ -22,7 +23,7 @@ return {
         start_in_insert = true,
         insert_mappings = true,
         persist_size = true,
-        direction = "horizontal", 
+        direction = "horizontal",
         close_on_exit = true,
         shell = vim.o.shell,
         float_opts = {
@@ -33,9 +34,10 @@ return {
             background = "Normal",
           },
         },
-      })
+      }
 
-      local Terminal = require("toggleterm.terminal").Terminal
+      toggleterm.setup(term_config)
+
       local float_term = Terminal:new({
         direction = "float",
         close_on_exit = true,
@@ -44,18 +46,23 @@ return {
           width = 120,
           height = 30,
           row = function()
-            return vim.o.lines - 20 - 2  
+            return vim.o.lines - 20 - 2
           end,
           col = function()
-            return vim.o.columns - 80 - 2  
+            return vim.o.columns - 80 - 2
           end,
           border = "single",
         },
       })
 
-      vim.keymap.set('n', '<S-t>', function()
+      vim.keymap.set("n", "<S-t>", function()
         float_term:toggle()
-      end, { noremap = true, silent = true, desc = "Toggle Float Terminal" })
+      end, {
+        noremap = true,
+        silent = true,
+        desc = "Toggle Float Terminal",
+      })
     end,
   },
 }
+

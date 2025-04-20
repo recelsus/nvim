@@ -6,8 +6,10 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     event = "BufReadPre",
+
     config = function()
       local telescope = require("telescope")
+      telescope.load_extension("fzf")
 
       telescope.setup({
         defaults = {
@@ -27,16 +29,6 @@ return {
             "--smart-case",
             "-uu",
           },
-          mappings = {
-          --  i = {
-          --    ["<C-j>"] = "move_selection_next",
-          --    ["<C-k>"] = "move_selection_previous",
-          --  },
-          --  n = {
-          --    ["<C-j>"] = "move_selection_next",
-          --    ["<C-k>"] = "move_selection_previous",
-          --  },
-          }
         },
         extensions = {
           fzf = {
@@ -53,9 +45,8 @@ return {
       vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { noremap = true, silent = true, desc = "[Telescope] Live Grep (Text Search)" })
       vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { noremap = true, silent = true, desc = "[Telescope] List Buffers" })
       vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { noremap = true, silent = true, desc = "[Telescope] Search Help Tags" })
-      vim.keymap.set("n", "<leader>fk", builtin.keymaps, { noremap = true, silent = true, desc = "[Telescope] Search Keymaps" })
+      vim.keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { noremap = true, silent = true, desc = "[Telescope] Search Keymaps" })
 
-      telescope.load_extension("fzf")
     end
   }
 }
