@@ -61,8 +61,42 @@ local function translate_diagnostic_message()
   end
 
   local message = diagnostics[1].message
-  local command = string.format(":Translate --engine=google,youdao \"%s\"", message)
-  vim.cmd(command)
+  local api_key = vim.fn.getenv("GEMINI_API_KEY")
+
+  if not api_key or api_key == "" then
+    print("GEMINI_API_KEY is not set.")
+    return
+  end
+
+  local prompt = string.format("Translate the following LSP diagnostic message into Japanese:\n\n%s", message)
+
+  local body = vim.fn.json_encode({
+    contents = {
+      {
+        parts = {
+          { text = prompt }
+        }
+      }
+    }
+  })
+
+  local url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" .. api_key
+  local curl_cmd = {
+    "curl", "-s", "-X", "POST", url,
+    "-H", "Content-Type: application/json",
+    "-d", body,
+  }
+
+  local response = vim.fn.system(curl_cmd)
+
+  local ok, parsed = pcall(vim.fn.json_decode, response)
+  if not ok or not parsed or not parsed.candidates then
+    print("Failed to get response from Gemini.")
+    return
+  end
+
+  local translated = parsed.candidates[1].content.parts[1].text
+  print("[Translated Diagnostic]: " .. translated)
 end
 
 vim.keymap.set('n', '<leader>td', translate_diagnostic_message, { noremap = true, silent = true, desc = "[LSP] Translate Diagnostic Message" })

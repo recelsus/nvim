@@ -16,11 +16,12 @@ return {
       require("mason").setup()
       require("mason-lspconfig").setup()
 
+      -- Global diagnostic keymaps
       vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, { desc = "[LSP] Show Diagnostics", noremap = true, silent = true })
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "[LSP] Go to Previous Diagnostic", noremap = true, silent = true })
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "[LSP] Go to Next Diagnostic", noremap = true, silent = true })
 
-      local on_attach = function(client, bufnr)
+      local on_attach = function(_, bufnr)
         vim.diagnostic.config({
           virtual_text = true,
           signs = true,
@@ -36,28 +37,18 @@ return {
         vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = "[LSP] Show Signature Help", buffer = bufnr })
       end
 
-      local server_map = {
-        ts_ls = "ts_ls",
-        bashls = "bashls",
-        clangd = "clangd",
-        phpactor = "phpactor",
-        rust_analyzer = "rust_analyzer",
-      }
-
+      -- LSP setup for all installed servers
       require("mason-lspconfig").setup_handlers {
         function(server_name)
-          local lsp_server = server_map[server_name] or server_name
-
-          local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-          require("lspconfig")[lsp_server].setup {
-            capabilities = capabilities,
-            on_attach = on_attach
+          require("lspconfig")[server_name].setup {
+            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            on_attach = on_attach,
           }
         end,
       }
 
-      local cmp = require'cmp'
+      -- Completion setup
+      local cmp = require("cmp")
 
       cmp.setup({
         mapping = {
@@ -79,7 +70,7 @@ return {
         }, {
           { name = 'buffer' },
           { name = 'path' },
-        })
+        }),
       })
     end,
   },
