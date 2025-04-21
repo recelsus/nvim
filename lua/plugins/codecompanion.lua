@@ -7,6 +7,12 @@ return {
   config = function()
     require('codecompanion').setup {
       language = "japanese",
+      display = {
+        chat = {
+          auto_scroll = false,
+          show_header_separator = true,
+        },
+      },
 
       adapters = {
         gemini = function()
@@ -32,5 +38,5 @@ return {
         },
       },
     }
-  end,
+  end
 }
