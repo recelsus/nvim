@@ -1,6 +1,7 @@
 *
 !init.lua
 !.gitignore
+!.luarc.json
 
 !lua/
 !lua/config/
