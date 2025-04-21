@@ -6,7 +6,9 @@ return {
   },
   config = function()
     require('codecompanion').setup {
-      language = "japanese",
+      opts = {
+        language = "japanese",
+      },
       display = {
         chat = {
           auto_scroll = false,
@@ -32,6 +34,23 @@ return {
       strategies = {
         chat = {
           adapter = 'gemini',
+          slash_commands = {
+            ["buffer"] = {
+              opts = { provider = "telescope" },
+            },
+            ["file"] = {
+              opts = { provider = "telescope" },
+            },
+            ["help"] = {
+              opts = { provider = "telescope" },
+            },
+            ["symbols"] = {
+              opts = { provider = "telescope" },
+            },
+            ["workspace"] = {
+              opts = { provider = "telescope" },
+            },
+          },
         },
         inline = {
           adapter = 'gemini',
