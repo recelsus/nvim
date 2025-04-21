@@ -31,6 +31,7 @@ local function load_plugins()
     ["nvim-lsp.lua"] = true,
     ["telescope.lua"] = true,
     ["which-key.lua"] = true,
+    ["copilot.lua"] = true,
   }
 
   for _, fname in ipairs(vim.fn.readdir(plugin_dir)) do
