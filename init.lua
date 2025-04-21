@@ -26,12 +26,14 @@ local function load_plugins()
   local plugins = {}
 
   local minimal_excludes = {
-    ["codecompanion.lua"] = true,
-    ["markdown-preview.lua"] = true,
     ["nvim-lsp.lua"] = true,
+    ["markdown-preview.lua"] = true,
     ["telescope.lua"] = true,
     ["which-key.lua"] = true,
     ["copilot.lua"] = true,
+    ["render-markdown.lua"] = true,
+    ["codecompanion.lua"] = true,
+    ["lsp-signature.lua"] = true,
   }
 
   for _, fname in ipairs(vim.fn.readdir(plugin_dir)) do
