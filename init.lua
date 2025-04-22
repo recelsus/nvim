@@ -38,7 +38,7 @@ local function load_plugins()
 
   for _, fname in ipairs(vim.fn.readdir(plugin_dir)) do
     if fname:match("%.lua$") then
-      if env == "minimal" and minimal_excludes[file] then
+      if env == "minimal" and minimal_excludes[fname] then
         goto continue
       end
 
