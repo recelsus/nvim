@@ -27,11 +27,11 @@ local function load_plugins()
 
   local minimal_excludes = {
     ["nvim-lsp.lua"] = true,
-    ["markdown-preview.lua"] = true,
-    ["telescope.lua"] = true,
     ["which-key.lua"] = true,
-    ["copilot.lua"] = true,
+    ["telescope.lua"] = true,
     ["render-markdown.lua"] = true,
+    ["markdown-preview.lua"] = true,
+    ["copilot.lua"] = true,
     ["codecompanion.lua"] = true,
     ["lsp-signature.lua"] = true,
   }
