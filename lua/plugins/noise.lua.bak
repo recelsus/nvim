@@ -3,12 +3,17 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
 
-    opts = {
-    },
-
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          require("notify").setup({
+            max_width = 60,
+            timeout = 3000,
+          })
+        end,
+      },
     },
 
     config = function()
@@ -22,3 +27,4 @@ return {
     end
   }
 }
+
