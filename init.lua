@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 local function load_plugins()
   local env_path = vim.fn.stdpath("config") .. "/env"
   local file = io.open(env_path, "r")
-  local env = file and file:read("*l") or "full"
+  local env = file and file:read("*l") or "minimal"
   if file then file:close() end
 
   local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
